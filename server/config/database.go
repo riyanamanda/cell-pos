@@ -27,6 +27,7 @@ func Connection() {
 
 	db.AutoMigrate(
 		&models.Brand{},
+		&models.User{},
 	)
 
 	DB = db
