@@ -29,6 +29,7 @@ func Connection() {
 	err = db.AutoMigrate(
 		&models.User{},
 		&models.Brand{},
+		&models.Category{},
 	)
 	helper.PanicIfError(err)
 

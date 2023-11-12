@@ -9,77 +9,77 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func GetBrands(ctx *gin.Context) {
-	var brands []models.Brand
-	
-	config.DB.Find(&brands)
+func GetCategories(ctx *gin.Context){
+	var categories []models.Category
+
+	config.DB.Find(&categories)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"success": true,
-		"data": brands,
+		"data": categories,
 	})
 }
 
-func StoreBrand(ctx *gin.Context){
-	var input request.StoreBrandRequest
-
+func StoreCategory(ctx *gin.Context){
+	var input request.StoreCategoryRequest
+	
 	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
-			"error": err.Error(),
+			"message": err.Error(),
 		})
 	}
 
-	brand := models.Brand{
+	category := models.Category{
 		Name: input.Name,
 	}
- 	config.DB.Create(&brand)
+	config.DB.Create(&category)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"success": true,
-		"message": "Data have been added successfully",
+		"message": "Data has been added successfully",
 	})
 }
 
-func GetBrandById(ctx *gin.Context){
-	var brand models.Brand
+func GetCategoryById(ctx *gin.Context){
+	var category models.Category
 
-	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&brand).Error; err != nil {
+	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&category).Error; err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
+			"succes": false,
 			"message": "Record not found",
 		})
 
 		return
-	  }
+	}
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"success": true,
-		"data": brand,
+		"data": category,
 	})
 }
 
-func UpdateBrandById(ctx *gin.Context){
-	var brand models.Brand
+func UpdateCategoryById(ctx *gin.Context){
+	var category models.Category
 
-	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&brand).Error; err != nil {
+	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&category).Error; err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
 			"message": "Record not found",
 		})
 	}
 
-	var input request.UpdateBrandRequest
+	var input request.UpdateCategoryRequest
 	if err := ctx.ShouldBindJSON(&input); err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
-			"success": false,
-			"error": err.Error(),
+			"succes": false,
+			"message": err.Error(),
 		})
 
 		return
 	}
-
-	config.DB.Model(&brand).Updates(input)
+	
+	config.DB.Model(&category).Updates(input)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"success": true,
@@ -87,19 +87,19 @@ func UpdateBrandById(ctx *gin.Context){
 	})
 }
 
-func DeleteBrandById(ctx *gin.Context){
-	var brand models.Brand
+func DeleteCategoryById(ctx *gin.Context){
+	var category models.Category
 
-	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&brand).Error; err != nil {
+	if err := config.DB.Where("id = ?", ctx.Param("id")).First(&category).Error; err != nil {
 		ctx.JSON(http.StatusBadRequest, gin.H{
 			"success": false,
-			"message": "Record not found",
+			"message": err.Error(),
 		})
 
 		return
 	}
 
-	config.DB.Delete(&brand)
+	config.DB.Delete(&category)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"success": true,
