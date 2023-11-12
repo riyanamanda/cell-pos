@@ -8,23 +8,22 @@ An app to record all store's transactions and reports. ERD (Entity Relationship 
     -   [Go](https://go.dev/) as BE API Service
     -   [React JS](https://react.dev/) as FE Client Service
 
-<br/>
-
 ## Features
 
 -   Manage
-    -   Users
-    -   Categories
-    -   Brands
-    -   Permissions
--   Record Transactions
--   Reporting
-
-<br/>
+    -   [ ] Users
+    -   [x] Categories
+    -   [x] Brands
+-   [ ] Record Transactions
+-   [ ] Reporting
+-   [ ] Auth
 
 ## Installation
 
-<br/>
+```
+
+```
+
 <hr/>
 
 The app is analyzed based on <b>personal needs</b> and <b>tiny-sized businesses</b>, the app is still in the <b>planning stage</b>.
