@@ -24,12 +24,13 @@ func Connection() {
 
 	dsn := user + ":" + pass + "@tcp(" + host + ":" + port + ")/" + name + "?charset=utf8mb4&parseTime=True&loc=Local"
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
+	helper.PanicIfError(err)
 
-	db.AutoMigrate(
-		&models.Brand{},
+	err = db.AutoMigrate(
 		&models.User{},
+		&models.Brand{},
 	)
+	helper.PanicIfError(err)
 
 	DB = db
-	helper.PanicIfError(err)
 }

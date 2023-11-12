@@ -19,6 +19,12 @@ func main()  {
 	api := router.Group("/api")
 	{
 		api.GET("/dashboard", controllers.Dashboard)
+
+		api.GET("/brands", controllers.GetBrands)
+		api.POST("/brand", controllers.StoreBrand)
+		api.GET("/brand/:id", controllers.GetBrandById)
+		api.PATCH("/brand/:id", controllers.UpdateBrandById)
+		api.DELETE("/brand/:id", controllers.DeleteBrand)
 	}
 
 	server := http.Server{
