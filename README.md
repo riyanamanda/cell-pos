@@ -5,15 +5,17 @@ An app to record all store's transactions and reports. ERD (Entity Relationship 
 ## Tech Stack & Libraries
 
 -   Tech Stack
-    -   [Go](https://go.dev/) as BE API Service
-    -   [React JS](https://react.dev/) as FE Client Service
+    -   [Spring Boot](https://spring.io/projects/spring-boot) as BE API Service
+    -   [Next JS](https://nextjs.org/) as FE Client Service
+    -   [PostgreSql](https://www.postgresql.org/) as Database Management System
 
 ## Features
 
 -   Manage
     -   [ ] Users
-    -   [x] Categories
-    -   [x] Brands
+    -   [ ] Categories
+    -   [ ] Brands
+    -   [ ] Roles
 -   [ ] Record Transactions
 -   [ ] Reporting
 -   [ ] Auth
